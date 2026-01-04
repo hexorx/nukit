@@ -18,7 +18,7 @@ Setting up the base template with all core integrations.
 - [x] Configure Vitest for testing
 
 ### Phase 2: Convex Integration
-- [ ] Install and configure Convex
+- [x] Install and configure Convex
 - [ ] Set up Convex dev environment
 - [ ] Create base schema
 - [ ] Add example queries and mutations
