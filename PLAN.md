@@ -19,10 +19,10 @@ Setting up the base template with all core integrations.
 
 ### Phase 2: Convex Integration
 - [x] Install and configure Convex
-- [ ] Set up Convex dev environment
-- [ ] Create base schema
-- [ ] Add example queries and mutations
-- [ ] Implement reactive data composable
+- [x] Set up Convex dev environment
+- [x] Create base schema
+- [x] Add example queries and mutations
+- [x] Implement reactive data composable
 
 ### Phase 3: Authentication
 - [ ] Install Better Auth
