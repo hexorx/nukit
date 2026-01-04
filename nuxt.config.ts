@@ -7,7 +7,8 @@ export default defineNuxtConfig({
     '@nuxt/hints',
     '@nuxt/image',
     '@nuxt/scripts',
-    '@nuxt/test-utils'
+    '@nuxt/test-utils',
+    ['convex-nuxt', { url: process.env.CONVEX_URL || '' }]
   ],
 
   devtools: {
@@ -18,6 +19,12 @@ export default defineNuxtConfig({
 
   routeRules: {
     '/': { prerender: true }
+  },
+
+  nitro: {
+    prerender: {
+      failOnError: false
+    }
   },
 
   compatibilityDate: '2025-01-15',
