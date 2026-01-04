@@ -21,13 +21,13 @@ export default defineNuxtConfig({
     '/': { prerender: true }
   },
 
+  compatibilityDate: '2025-01-15',
+
   nitro: {
     prerender: {
       failOnError: false
     }
   },
-
-  compatibilityDate: '2025-01-15',
 
   eslint: {
     config: {

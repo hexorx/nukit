@@ -5,12 +5,14 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
+    "dev:convex": "convex dev",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
     "typecheck": "nuxt typecheck",
     "test": "vitest",
-    "test:run": "vitest run"
+    "test:run": "vitest run",
+    "convex:deploy": "convex deploy"
   },
   "dependencies": {
     "@iconify-json/lucide": "^1.2.82",
