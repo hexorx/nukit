@@ -15,7 +15,7 @@ Setting up the base template with all core integrations.
 - [x] Initialize Nuxt 4 project with TypeScript
 - [x] Configure NuxtUI
 - [x] Set up ESLint + Prettier
-- [ ] Configure Vitest for testing
+- [x] Configure Vitest for testing
 
 ### Phase 2: Convex Integration
 - [ ] Install and configure Convex
