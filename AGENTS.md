@@ -13,34 +13,41 @@ pnpm lint             # Run ESLint
 pnpm typecheck        # TypeScript type checking
 ```
 
-## Issue Tracking (bd / beads)
+---
 
-```bash
-bd ready              # Find available work
-bd show <id>          # View issue details
-bd update <id> --status in_progress  # Claim work
-bd close <id>         # Complete work
-bd sync               # Sync with git
-```
+## Issue Tracking
 
-Run `bd onboard` to get started.
+This project uses **bd (beads)** for issue tracking.
+Run `bd prime` for workflow context, or install hooks (`bd hooks install`) for auto-injection.
+
+**Quick reference:**
+
+- `bd ready` - Find unblocked work
+- `bd create "Title" --type task --priority 2` - Create issue
+- `bd close <id>` - Complete work
+- `bd sync` - Sync with git (run at session end)
+
+For full workflow details: `bd prime`
 
 ---
 
 ## Build & Quality Commands
 
 ### Linting
+
 ```bash
 pnpm lint             # Lint entire project
 pnpm lint --fix       # Auto-fix lint errors
 ```
 
 ### Type Checking
+
 ```bash
 pnpm typecheck        # Run vue-tsc type checking
 ```
 
 ### Testing
+
 ```bash
 # @nuxt/test-utils is installed but tests not yet configured
 # When tests exist:
@@ -49,6 +56,7 @@ pnpm test path/to/file.test.ts  # Run single test file
 ```
 
 ### Build
+
 ```bash
 pnpm build            # Production build
 pnpm preview          # Preview production build locally
@@ -78,37 +86,41 @@ nuxt.config.ts      # Nuxt configuration
 ## Convex Development
 
 ### Setup
+
 1. Copy `.env.example` to `.env` and set `CONVEX_URL`
 2. Run `pnpm dev:convex` to start Convex dev server
 3. Run `pnpm dev` in another terminal for Nuxt
 
 ### Key Files
+
 - `convex/schema.ts` - Define tables with `defineTable()` and validators
 - `convex/tasks.ts` - Example queries and mutations
 - `app/composables/useTasks.ts` - Example composable using Convex
 
 ### Usage in Components
+
 ```vue
 <script setup>
-const { tasks, isPending, createTask } = useTasks()
+const { tasks, isPending, createTask } = useTasks();
 </script>
 ```
 
 ### Convex Functions
+
 ```typescript
 // convex/tasks.ts
 export const list = query({
   handler: async (ctx) => {
-    return await ctx.db.query('tasks').collect()
-  }
-})
+    return await ctx.db.query("tasks").collect();
+  },
+});
 
 export const create = mutation({
   args: { text: v.string() },
   handler: async (ctx, args) => {
-    return await ctx.db.insert('tasks', { text: args.text, completed: false })
-  }
-})
+    return await ctx.db.insert("tasks", { text: args.text, completed: false });
+  },
+});
 ```
 
 ---
@@ -116,40 +128,46 @@ export const create = mutation({
 ## Code Style Guidelines
 
 ### Vue Components
+
 - **Always** use Composition API with `<script setup>`
 - **Single-file components** (.vue files)
 - Template-only components are valid (no script needed for presentational components)
 
 ### TypeScript
+
 - **Strict mode** enabled
 - Prefer explicit types over implicit
 - Use TypeScript generics for props: `defineProps<{ ... }>()`
 
 ### ESLint Configuration
+
 - **No trailing commas** (`commaDangle: 'never'`)
 - **1TBS brace style** (opening brace on same line)
 - Auto-imports enabled (no need to import Vue/Nuxt APIs)
 
 ### Formatting
+
 - **2 space** indentation, **LF** line endings, **UTF-8** encoding
 - Final newline required
 
 ### Imports
+
 - Nuxt auto-imports Vue/Nuxt APIs - no manual imports needed
 - Components auto-imported from `app/components/`
 - Composables auto-imported from `app/composables/`
 
 ### Naming Conventions
 
-| Type | Convention | Example |
-|------|------------|---------|
-| Components | PascalCase | `UserProfile.vue` |
-| Composables | camelCase + use | `useAuth.ts` |
-| Constants | UPPER_SNAKE_CASE | `MAX_RETRIES` |
-| Props/Events | camelCase | `userName`, `onSubmit` |
-| CSS classes | kebab-case | `.user-profile` |
+| Type         | Convention       | Example                |
+| ------------ | ---------------- | ---------------------- |
+| Components   | PascalCase       | `UserProfile.vue`      |
+| Composables  | camelCase + use  | `useAuth.ts`           |
+| Constants    | UPPER_SNAKE_CASE | `MAX_RETRIES`          |
+| Props/Events | camelCase        | `userName`, `onSubmit` |
+| CSS classes  | kebab-case       | `.user-profile`        |
 
 ### Error Handling
+
 - Use error boundaries for component errors
 - Show user-friendly messages with toast notifications
 - Log errors with context (component name, action)
@@ -160,16 +178,19 @@ export const create = mutation({
 ## Non-Negotiables
 
 ### Tools
+
 - **pnpm only** - Never use npm or yarn
 - **rg for search** - Never use grep
 - **fd for files** - Never use find
 
 ### Architecture
+
 - No circular dependencies
 - Composables for shared logic (prefix with `use`)
 - Components are single-file (.vue with script setup)
 
 ### Git Workflow
+
 - **Feature branches**: `feature/`, `fix/`, `docs/`
 - **Conventional commits**: `feat:`, `fix:`, `docs:`, `refactor:`
 - Always quote filenames: `git add "file.vue"`
@@ -202,6 +223,7 @@ export const create = mutation({
 6. **Hand off** - Provide context for next session
 
 **CRITICAL RULES:**
+
 - Work is NOT complete until `git push` succeeds
 - NEVER stop before pushing - that leaves work stranded locally
 - If push fails, resolve and retry until it succeeds
@@ -210,10 +232,9 @@ export const create = mutation({
 
 ## Related Documentation
 
-| File | Purpose |
-|------|---------|
-| CONSTITUTION.md | Core values, non-negotiables |
-| VISION.md | Product direction and goals |
-| PLAN.md | Current roadmap and phases |
-| GARDEN.md | Knowledge base and patterns |
-| CLAUDE.md | Detailed development reference |
+| File            | Purpose                        |
+| --------------- | ------------------------------ |
+| CONSTITUTION.md | Core values, non-negotiables   |
+| VISION.md       | Product direction and goals    |
+| GARDEN.md       | Knowledge base and patterns    |
+| CLAUDE.md       | Detailed development reference |
