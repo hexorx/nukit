@@ -1,15 +1,20 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+const modules: Array<string | [string, Record<string, unknown>]> = [
+  '@nuxt/eslint',
+  '@nuxt/ui',
+  '@nuxt/content',
+  '@nuxt/hints',
+  '@nuxt/image',
+  '@nuxt/scripts',
+  '@nuxt/test-utils'
+]
+
+if (process.env.CONVEX_URL) {
+  modules.push(['convex-nuxt', { url: process.env.CONVEX_URL }])
+}
+
 export default defineNuxtConfig({
-  modules: [
-    '@nuxt/eslint',
-    '@nuxt/ui',
-    '@nuxt/content',
-    '@nuxt/hints',
-    '@nuxt/image',
-    '@nuxt/scripts',
-    '@nuxt/test-utils',
-    ['convex-nuxt', { url: process.env.CONVEX_URL || '' }]
-  ],
+  modules,
 
   devtools: {
     enabled: true
