@@ -5,14 +5,16 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "dev:convex": "convex dev",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
     "typecheck": "nuxt typecheck",
     "test": "vitest",
     "test:run": "vitest run",
-    "convex:deploy": "convex deploy"
+    "convex:dev": "convex dev",
+    "convex:deploy": "convex deploy",
+    "convex:env": "grep -v '^#' .env | grep -E '^(BETTER_AUTH|GITHUB_|GOOGLE_)' | while IFS='=' read -r k v; do npx convex env set \"$k\" \"$v\"; done",
+    "convex:env:prod": "grep -v '^#' .env.production | grep -E '^(BETTER_AUTH|GITHUB_|GOOGLE_)' | while IFS='=' read -r k v; do npx convex env set \"$k\" \"$v\"; done"
   },
   "dependencies": {
     "@convex-dev/better-auth": "^0.10.9",

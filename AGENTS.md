@@ -7,7 +7,8 @@ This document provides guidance for AI agents working in this Nuxt 4 + Nuxt UI c
 ```bash
 pnpm install          # Install dependencies (pnpm 10.26.1 required)
 pnpm dev              # Development server at http://localhost:3000
-pnpm dev:convex       # Convex dev server (run in separate terminal)
+pnpm convex:dev       # Convex dev server (run in separate terminal)
+pnpm convex:env       # Sync auth env vars from .env to Convex
 pnpm build            # Production build
 pnpm lint             # Run ESLint
 pnpm typecheck        # TypeScript type checking
@@ -87,9 +88,13 @@ nuxt.config.ts      # Nuxt configuration
 
 ### Setup
 
-1. Copy `.env.example` to `.env` and set `CONVEX_URL`
-2. Run `pnpm dev:convex` to start Convex dev server
-3. Run `pnpm dev` in another terminal for Nuxt
+1. Copy `.env.example` to `.env` and configure:
+   - `CONVEX_URL` - Your Convex deployment URL
+   - `BETTER_AUTH_SECRET` - Auth secret (32+ chars)
+   - `BETTER_AUTH_URL` - Your app URL (e.g., http://localhost:3000)
+2. Run `pnpm convex:dev` to start Convex dev server
+3. Run `pnpm convex:env` to sync auth env vars to Convex
+4. Run `pnpm dev` in another terminal for Nuxt
 
 ### Key Files
 
