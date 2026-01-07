@@ -22,6 +22,14 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
+  runtimeConfig: {
+    public: {
+      authEnabled: !!process.env.BETTER_AUTH_SECRET,
+      authGithubEnabled: !!(process.env.GITHUB_CLIENT_ID && process.env.GITHUB_CLIENT_SECRET),
+      authGoogleEnabled: !!(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET)
+    }
+  },
+
   routeRules: {
     '/': { prerender: true }
   },

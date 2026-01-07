@@ -15,6 +15,7 @@
     "convex:deploy": "convex deploy"
   },
   "dependencies": {
+    "@convex-dev/better-auth": "^0.10.9",
     "@iconify-json/lucide": "^1.2.82",
     "@iconify-json/simple-icons": "^1.2.63",
     "@nuxt/content": "3.10.0",
@@ -24,10 +25,12 @@
     "@nuxt/test-utils": "3.21.0",
     "@nuxt/ui": "^4.3.0",
     "@unhead/vue": "^2.0.19",
+    "better-auth": "^1.4.10",
     "better-sqlite3": "^12.5.0",
     "convex": "^1.31.2",
     "convex-nuxt": "^0.1.5",
-    "nuxt": "^4.2.2"
+    "nuxt": "^4.2.2",
+    "zod": "^4.3.5"
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.12.1",
