@@ -1,8 +1,10 @@
 import { betterAuth } from 'better-auth'
 import type { BetterAuthOptions } from 'better-auth'
 import { createClient, type GenericCtx } from '@convex-dev/better-auth'
+import { convex } from '@convex-dev/better-auth/plugins'
 import { components } from './_generated/api'
 import type { DataModel } from './_generated/dataModel'
+import authConfig from './auth.config'
 
 export const authComponent = createClient<DataModel>(components.betterAuth)
 
@@ -36,6 +38,9 @@ export function createAuth(ctx: GenericCtx<DataModel>) {
     emailAndPassword: {
       enabled: true
     },
+    plugins: [
+      convex({ authConfig })
+    ],
     ...(socialProviders && { socialProviders })
   })
 }
