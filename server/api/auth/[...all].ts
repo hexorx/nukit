@@ -8,9 +8,15 @@ export default defineEventHandler(async (event) => {
     })
   }
 
-  const convexSiteUrl = convexUrl.replace('.cloud', '.site')
   const path = event.context.params?.all || ''
-  const targetUrl = `${convexSiteUrl}/api/auth/${path}`
+
+  let targetUrl: string
+  if (convexUrl.includes('.convex.cloud')) {
+    const convexSiteUrl = convexUrl.replace('.cloud', '.site')
+    targetUrl = `${convexSiteUrl}/api/auth/${path}`
+  } else {
+    targetUrl = `${convexUrl}/api/auth/${path}`
+  }
 
   return proxyRequest(event, targetUrl)
 })
